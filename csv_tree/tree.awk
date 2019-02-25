@@ -1,4 +1,9 @@
 function subtree_weight(id, weight) {
+    if (id in cache) {
+        print "Result from cache: ", id, cache[id];
+        return cache[id];
+    }
+
     if (!(id in parents)) {
         return weight;
     }
@@ -7,6 +12,7 @@ function subtree_weight(id, weight) {
         weight += subtree_weight(parents[id][i]["id"], parents[id][i]["weight"]);
     }
 
+    cache[id] = weight;
     return weight;
 }
 
@@ -18,5 +24,6 @@ FNR == NR {
     next;
 }
 {
+    cache["empty"];
     print $0 "=>" subtree_weight($1, $3);
 }
