@@ -1,6 +1,6 @@
 function subtree_weight(id, weight) {
     if (id in cache) {
-        print "Result from cache: ", id, cache[id];
+#        print "Result from cache: ", id, cache[id];
         return cache[id];
     }
 
