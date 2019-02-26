@@ -1,28 +1,17 @@
 function subtree_weight(id, weight) {
-    if (id in cache) {
-        return cache[id];
-    }
+    if (id in weight_cache)
+        return weight_cache[id];
 
-    if (!(id in parents)) {
+    if (!(id in parents))
         return weight;
-    }
 
-    for (i in parents[id]) {
-        weight += subtree_weight(parents[id][i]["id"], parents[id][i]["weight"]);
-    }
+    for (child_id in parents[id])
+        weight += subtree_weight(child_id, parents[id][child_id]);
 
-    cache[id] = weight;
+    weight_cache[id] = weight;
     return weight;
 }
 
-FNR == NR {
-    new_ind = ($2 in parents) ? length(parents[$2]) + 1 : 1;
-    parents[$2][new_ind]["id"] = $1;
-    parents[$2][new_ind]["parent"] = $2;
-    parents[$2][new_ind]["weight"] = $3;
-    next;
-}
-{
-    cache["empty"];
-    print $0 "=>" subtree_weight($1, $3);
-}
+BEGIN { weight_cache["empty"] }
+FNR == NR { parents[$2][$1] = $3; next }
+{ print $0 "=>" subtree_weight($1, $3) }
