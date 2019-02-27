@@ -12,7 +12,7 @@ function print_pairs(vec, sum,    first, last) {
         else if (vec[first] + vec[last] < sum)
             first++;
         else {
-            if (vec[last] != vec[last+1] && vec[first] != vec[first-1])
+            if (vec[first] != vec[first-1])
                 printf "(%i, %i) ", vec[first], vec[last];
 
             first++;
