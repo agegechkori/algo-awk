@@ -12,11 +12,13 @@ function print_pairs(vec, sum,    first, last, array_length) {
         else if (vec[first] + vec[last] < sum)
             first++;
         else {
-            if (last < array_length && first > 1 && vec[last] != vec[last+1] && vec[first] != vec[first-1])
+            if (first > 1 && last < array_length && vec[last] != vec[last+1] && vec[first] != vec[first-1])
                 printf "(%i, %i) ", vec[first], vec[last];
-            else if (last == array_length && first > 1 && vec[first] != vec[first-1])
+            else if (first > 1 && last == array_length && vec[first] != vec[first-1])
                 printf "(%i, %i) ", vec[first], vec[last];
             else if (first == 1 && last < array_length && vec[last] != vec[last+1])
+                printf "(%i, %i) ", vec[first], vec[last];
+            else if (first == 1 && last == array_length)
                 printf "(%i, %i) ", vec[first], vec[last];
 
             first++;
@@ -29,6 +31,5 @@ function print_pairs(vec, sum,    first, last, array_length) {
     split($0, input);
     sum = input[1];
     delete input[1];
-    asort(input);
     print_pairs(input, sum);
 }
