@@ -1,7 +1,7 @@
 # Algorithm handles duplicates.
 # Runtime complexity O(n)
 # Additional space O(1)
-function print_pairs(vec, sum,    first, last, array_length) {
+function print_pairs(vec, sum,    first, last) {
     first = 1;
     last = asort(vec);
     vec[0] = vec[last+1] = "NULL";
