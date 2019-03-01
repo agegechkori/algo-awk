@@ -1,3 +1,5 @@
+# Runtime complexity O(n)
+# Additional space O(n)
 function subtree_weight(id, weight) {
     if (id in weight_cache)
         return weight_cache[id];
