@@ -15,8 +15,8 @@ function print_unique_triplets(vec, sum    ,i, j, k, array_length, triplet_count
     array_length = length(vec);
 
     for (i = 1; i < array_length - 1; i++)
-	    for (j = i + 1; j < array_length; j++)
-	        for (k = j + 1; k <= array_length; k++)
+        for (j = i + 1; j < array_length; j++)
+            for (k = j + 1; k <= array_length; k++)
                 if (is_unique_triplet(vec[i], vec[j], vec[k], sum, triplets)) {
                     triplets[vec[i], vec[j], vec[k]];
                     triplet_count++;
