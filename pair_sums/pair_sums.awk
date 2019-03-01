@@ -1,5 +1,5 @@
 # Algorithm handles duplicates.
-# Runtime complexity O(n)
+# Runtime complexity O(n log(n))
 # Additional space O(1)
 function print_pairs(vec, sum,    first, last) {
     first = 1;
