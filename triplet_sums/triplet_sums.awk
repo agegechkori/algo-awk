@@ -1,7 +1,7 @@
 # Algorithm handles duplicates.
 # Runtime complexity O(n^2)
 # Additional space O(1)
-function get_pairs(vec, sum, first, last ,pairs    ,count) {
+function get_pairs(vec, sum, first, last, pairs    ,count) {
     while (first < last)
         if (vec[first] + vec[last] > sum)
             last--;
@@ -10,11 +10,13 @@ function get_pairs(vec, sum, first, last ,pairs    ,count) {
         else {
             if (vec[first] != vec[first-1]) {
                 pairs[++count][1] = vec[first];
-		pairs[count][2] = vec[last];
-	    }
+                pairs[count][2] = vec[last];
+            }
+
             first++;
             last--;
         }
+
     return count;
 }
 
@@ -54,5 +56,5 @@ $0 !~/^#/{
     if (pairs_count > 0)
         printf "\n";
     else
-	print "No triplets can be formed";
+    print "No triplets can be formed";
 }
