@@ -12,7 +12,7 @@ function is_unique_triplet(a, b, c, sum, triplets) {
 }
 
 function print_unique_triplets(vec, sum    ,i, j, k, array_length, triplet_count, triplets) {
-    array_length = length(vec);
+    array_length = asort(input);
 
     for (i = 1; i < array_length - 1; i++)
         for (j = i + 1; j < array_length; j++)
@@ -35,7 +35,6 @@ function get_sum_and_array(vec, input_line    ,sum) {
 
 $0 !~/^#/{
     sum = get_sum_and_array(input, $0);
-    asort(input);
     triplet_count = 0;
 
     triplet_count = print_unique_triplets(input, sum);
