@@ -48,7 +48,6 @@ function get_sum_and_array(vec, input_line    ,sum) {
 
 $0 !~/^#/{
     sum = get_sum_and_array(input, $0);
-    triplet_count = 0;
 
     triplet_count = print_unique_triplets(input, sum);
 
