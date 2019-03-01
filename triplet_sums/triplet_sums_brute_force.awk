@@ -1,20 +1,29 @@
-# Algorithm handles duplicates.
-# Runtime complexity O(n^2)
+# Brute force algorithm that handles duplicates.
+# Runtime complexity O(n^3)
 # Additional space O(1)
-function print_triplets(vec, sum    , i, j, k, array_length, pairs_count) {
+function is_unique_triplet(a, b, c, sum, triplets) {
+    if (a + b + c != sum)
+        return 0;
+
+    if ((a, b, c) in triplets)
+        return 0;
+
+    return 1;
+}
+
+function print_unique_triplets(vec, sum    ,i, j, k, array_length, triplet_count, triplets) {
     array_length = length(vec);
 
     for (i = 1; i < array_length - 1; i++)
-	for (j = i + 1; j < array_length; j++)
-	    for (k = j + 1; k <= array_length; k++)
-		if (vec[i] + vec[j] + vec[k] == sum) {
-		    if (!((vec[i], vec[j], vec[k]) in pairs)) {
-		        pairs[vec[i], vec[j], vec[k]];
-		        printf "(%i, %i, %i)", vec[i], vec[j], vec[k];
-		        pairs_count++;
-		    }
-	        }
-    return pairs_count;
+	    for (j = i + 1; j < array_length; j++)
+	        for (k = j + 1; k <= array_length; k++)
+                if (is_unique_triplet(vec[i], vec[j], vec[k], sum, triplets)) {
+                    triplets[vec[i], vec[j], vec[k]];
+                    triplet_count++;
+                    printf "(%i, %i, %i)", vec[i], vec[j], vec[k];
+                }
+
+    return triplet_count;
 }
 
 function get_sum_and_array(vec, input_line    ,sum) {
@@ -25,14 +34,14 @@ function get_sum_and_array(vec, input_line    ,sum) {
 }
 
 $0 !~/^#/{
-    sum = get_sum_and_array(input, $0)
-    array_length = asort(input);
-    pairs_count = 0;
+    sum = get_sum_and_array(input, $0);
+    asort(input);
+    triplet_count = 0;
 
-    pairs_count = print_triplets(input, sum, i, array_length);
+    triplet_count = print_unique_triplets(input, sum);
 
-    if (pairs_count > 0)
+    if (triplet_count > 0)
         printf "\n";
     else
-	print "No triplets can be formed";
+	    print "No triplets can be formed";
 }
