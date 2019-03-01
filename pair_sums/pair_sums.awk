@@ -4,7 +4,7 @@
 function print_pairs(vec, sum,    first, last) {
     first = 1;
     last = asort(vec);
-    vec[0] = vec[last+1] = "NULL";
+    vec[0] = "NULL";
 
     while (first < last)
         if (vec[first] + vec[last] > sum)
