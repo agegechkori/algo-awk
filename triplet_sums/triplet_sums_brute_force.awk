@@ -43,5 +43,5 @@ $0 !~/^#/{
     if (triplet_count > 0)
         printf "\n";
     else
-	    print "No triplets can be formed";
+        print "No triplets can be formed";
 }
