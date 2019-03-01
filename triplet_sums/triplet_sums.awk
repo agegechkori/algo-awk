@@ -20,41 +20,48 @@ function get_pairs(vec, sum, first, last, pairs    ,count) {
     return count;
 }
 
-function print_triplets(vec, sum, i, array_length    ,current_number, pairs_count) {
+function print_triplets(vec, sum, i, array_length    ,current_number, triplet_count) {
     if (vec[i] == vec[i - 1])
         return 0;
 
     current_number = vec[i];
 
     vec[i] = "NULL";
-    pairs_count = get_pairs(vec, sum - current_number, i + 1, array_length, pairs);
+    triplet_count = get_pairs(vec, sum - current_number, i + 1, array_length, pairs);
     vec[i] = current_number;
 
-    for (j = 1; j <= pairs_count; j++)
+    for (j = 1; j <= triplet_count; j++)
         printf "(%i, %i, %i)", vec[i], pairs[j][1], pairs[j][2];
 
-    return pairs_count;
+    return triplet_count;
+}
+
+function print_unique_triplets(vec, sum    ,array_length, triplet_count, i) {
+    array_length = asort(vec);
+    vec[0] = vec[array_length + 1] = "NULL";
+
+    for (i = 1; i < array_length - 1; i++) {
+        triplet_count += print_triplets(vec, sum, i, array_length);
+    }
+
+    return triplet_count;
 }
 
 function get_sum_and_array(vec, input_line    ,sum) {
-    split(input_line, input);
-    sum = input[1];
-    delete input[1];
+    split(input_line, vec);
+    sum = vec[1];
+    delete vec[1];
     return sum;
 }
 
 $0 !~/^#/{
-    sum = get_sum_and_array(input, $0)
-    array_length = asort(input);
-    input[0] = input[array_length+1] = "NULL";
-    pairs_count = 0;
+    sum = get_sum_and_array(input, $0);
+    triplet_count = 0;
 
-    for (i = 1; i < array_length - 1; i++) {
-        pairs_count += print_triplets(input, sum, i, array_length);
-    }
+    triplet_count = print_unique_triplets(input, sum);
 
-    if (pairs_count > 0)
+    if (triplet_count > 0)
         printf "\n";
     else
-    print "No triplets can be formed";
+        print "No triplets can be formed";
 }
