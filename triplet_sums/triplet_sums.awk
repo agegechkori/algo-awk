@@ -33,6 +33,7 @@ function print_unique_triplets(vec, sum    ,last, triplet_count, i, pair_count, 
 
         for (j = 1; j <= pair_count; j++)
             printf "(%i, %i, %i)", vec[i], pairs[j][1], pairs[j][2];
+
         triplet_count += pair_count;
     }
 
