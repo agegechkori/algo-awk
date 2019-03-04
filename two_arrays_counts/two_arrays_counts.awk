@@ -1,5 +1,5 @@
-# Runtime complexity O(n log(n))
-# Additional space O(1)
+# Runtime complexity O(k log(k)), where k = max(n,m), and n,m - arrays sizes
+# Additional space depends on the sorting algorithm
 function count_lesser_elements(vec1, vec2, counts    ,i, j, k, vec_length1, vec_length2) {
     vec_length1 = asort(vec1);
     vec_length2 = asort(vec2);

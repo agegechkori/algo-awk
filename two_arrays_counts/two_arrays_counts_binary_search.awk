@@ -1,5 +1,5 @@
-# Runtime complexity O(n log(n))
-# Additional space O(1)
+# Runtime complexity O(max(n,m) log(m)), where n,m - size of the first and second arrays, acordingly.
+# Additional space depends on the sorting algorithm
 @include "../binary_search_with_duplicates/binary_search_lib.awk"
 
 function count_lesser_elements(vec1, vec2, counts    ,i, j, k, vec_length1, vec_length2) {
