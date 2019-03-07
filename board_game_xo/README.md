@@ -49,4 +49,4 @@ E.g.
 
     Return 3.
 
-**Follow-up.** Build a solver for this board game that erases the as many orbs as possible.
+**Follow-up.** Build a solver for this board game that erases as many orbs as possible.
