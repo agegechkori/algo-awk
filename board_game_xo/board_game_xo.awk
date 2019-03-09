@@ -33,13 +33,13 @@ function connected_components(rows, cols, points    ,i, comp_number, visited) {
     visited[0][0];
     visited[1][0];
 
-    for (i in rows) {
+    for (i in rows)
         if (!(i in visited[0])) {
             visit(rows, cols, i, 0, visited);
             comp_number++;
             get_first_point(points, rows, i);
         }
-    }
+
     return comp_number;
 }
 
